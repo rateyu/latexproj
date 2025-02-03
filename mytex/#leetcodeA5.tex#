@@ -1,0 +1,82 @@
+\documentclass[10pt]{article}
+\usepackage{ctex} % 加载中文支持宏包
+\usepackage[x11names]{xcolor} % 启用更多颜色选项
+\usepackage{amsmath}      % 数学公式
+\usepackage{graphicx}     % 图片插入
+\usepackage{listings}     % 用于插入代码
+\usepackage{hyperref}     % 超链接支持
+\usepackage{geometry}     % 设置页边距
+\usepackage{fancyhdr}     % 页眉页脚设置
+\usepackage{tocbibind}    % 目录、参考文献包含在目录中
+\usepackage{float}  % 引入 float 包
+\linespread{1.2} % 增加行距，默认为 1.0
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+% 设置 A5 纸张尺寸和 1 英寸的边距
+\geometry{a5paper, left=0.5in, right=0.5in, top=0.5in, bottom=0.5in}
+
+
+% 设置列表中Java代码的样式
+\lstdefinestyle{java}{
+    language=Java,
+    backgroundcolor=\color{lightgray}, % 背景颜色
+    basicstyle=\ttfamily\footnotesize, % 字体
+    breaklines=true,                   % 自动换行
+    captionpos=b,                      % 标题位置
+    numbers=left,                      % 行号位置
+    numberstyle=\tiny\color{gray},     % 行号样式
+    keywordstyle=\color{blue},         % 关键词颜色
+    stringstyle=\color{red},           % 字符串颜色
+    commentstyle=\color{green},        % 注释颜色
+    frame=single                       % 边框
+}
+
+% 设置页眉和页脚
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{文章标题} % 左边页眉
+\fancyhead[C]{作者姓名} % 中间页眉
+\fancyhead[R]{日期} % 右边页眉
+\fancyfoot[C]{\thepage} % 页脚中间显示页码
+
+\title{论文标题}
+\author{作者姓名}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% 生成目录
+\tableofcontents
+\newpage
+
+\section{引言}
+这里是文章的引言部分。
+
+\section{Java代码示例}
+以下是一个嵌入的Java代码示例：
+
+\begin{lstlisting}[style=java, caption={HelloWorld.java}]
+public class HelloWorld {
+    public static void main(String[] args) {
+	//你好，世界
+        System.out.println("Hello, world!");
+    }
+}
+\end{lstlisting}
+
+\section{图片插入示例}
+下面是一个插入图片的示例：
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{9.png} % 确保替换为你的图片路径
+    \caption{示例图片}
+    \label{fig:example}
+\end{figure}
+
+\section{结论}
+本文展示了如何嵌入Java代码和图片，同时提供了目录、章节标题等结构。
+
+\end{document}
