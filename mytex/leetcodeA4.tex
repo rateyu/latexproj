@@ -1,10 +1,10 @@
-\documentclass[12pt]{article}
+\documentclass[10pt]{article}
 %%%%%%%%%%%%%
 %windows 正常 ok
-%\usepackage{ctex} % 加载中文支持宏包
+\usepackage{ctex} % 加载中文支持宏包
 %macos ok
-\usepackage{fontspec}
-\usepackage{xeCJK}  % 如果你需要支持中文
+%\usepackage{fontspec}
+%\usepackage{xeCJK}  % 如果你需要支持中文
 %%%%%%%%%%%%%
 
 \usepackage[x11names]{xcolor} % 启用更多颜色选项
@@ -14,34 +14,35 @@
 \usepackage{hyperref}     % 超链接支持
 \usepackage{geometry}     % 设置页边距
 \usepackage{fancyhdr}     % 页眉页脚设置
+\usepackage{multicol}   % 多栏排版
 \usepackage{tocbibind}    % 目录、参考文献包含在目录中
-\geometry{a4paper, left=1in, right=1in, top=1in, bottom=1in}
+\geometry{a4paper, left=0.6in, right=0.5in, top=0.5in, bottom=0.5in}
 
 % 设置列表中Java代码的样式
 \lstdefinestyle{java}{
     language=Java,
-    backgroundcolor=\color{lightgray}, % 背景颜色
+%    backgroundcolor=\color{lightgray}, % 背景颜色
     basicstyle=\ttfamily\footnotesize, % 字体
     breaklines=true,                   % 自动换行
     captionpos=b,                      % 标题位置
-    numbers=left,                      % 行号位置
-    numberstyle=\tiny\color{gray},     % 行号样式
+%    numbers=left,                      % 行号位置
+%    numberstyle=\tiny\color{gray},     % 行号样式
     keywordstyle=\color{blue},         % 关键词颜色
     stringstyle=\color{red},           % 字符串颜色
     commentstyle=\color{green},        % 注释颜色
-    frame=single                       % 边框
+%    frame=single                       % 边框
 }
 
 % 设置页眉和页脚
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{文章标题} % 左边页眉
-\fancyhead[C]{作者姓名} % 中间页眉
-\fancyhead[R]{日期} % 右边页眉
+\fancyhead[L]{技术学习} % 左边页眉
+\fancyhead[C]{sully} % 中间页眉
+\fancyhead[R]{202501} % 右边页眉
 \fancyfoot[C]{\thepage} % 页脚中间显示页码
 
-\title{论文标题}
-\author{作者姓名}
+\title{技术学习}
+\author{sully}
 \date{\today}
 
 \begin{document}
@@ -66,17 +67,6 @@ public class HelloWorld {
 }
 \end{lstlisting}
 
-\newpage
-\begin{lstlisting}[style=java, caption={HelloWorld.java}]
-public class HelloWorld {
-  public static void main(String[] args) {
-        //你好世界
-        System.out.println("Hello, world!");
-    }
-}
-\end{lstlisting}
-
-
 \section{图片插入示例}
 下面是一个插入图片的示例：
 
@@ -87,7 +77,194 @@ public class HelloWorld {
     \label{fig:example}
 \end{figure}
 
-\section{结论}
+
+\newpage
+\section{引言}
+这里是文章的引言部分。
+
+\newpage % two sum 不同语言解法，含冒泡和插入排序
+%\section{Java代码示例}
+%\vspace{-5mm}
+% 开始多栏排版
+\begin{multicols}{2}
+%\lstset{aboveskip=-2mm}  % 控制 lstlisting 上方的空白
+\begin{lstlisting}[style=java, caption={}]
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] aaa = { 7, 5, 3, 2, 8, 0, 1 };
+
+        System.out.println("冒泡排序");
+        for (int i = 0; i < aaa.length; i++) {
+            for (int j = 0; j < aaa.length - i - 1; j++) {
+                int tmp = aaa[j + 1];
+                if (aaa[j] > aaa[j + 1]) {
+                    aaa[j + 1] = aaa[j];
+                    aaa[j] = tmp;
+                }
+            }
+        }
+
+        for (int i = 0; i < aaa.length; i++) {
+            System.out.print(aaa[i] + ",");
+        }
+
+        System.out.println("");
+        System.out.println("插入排序");
+        int[] bbb = { 7, 5, 3, 2, 8, 0, 1 };
+        for (int i = 1; i < bbb.length; i++) {
+            int tmpV = bbb[i];
+            int j = i - 1;
+
+            /* 方法一，将比 key 大的元素向右移动 */
+            /*
+            while (j >= 0 && bbb[j] > tmpV) {
+                bbb[j + 1] = bbb[j];
+                j = j - 1;
+            }
+            bbb[j + 1] = tmpV;
+            */
+            //方法二
+            for(;j>=0;j--) {
+                if(bbb[j]>tmpV){
+                    bbb[j+1] = bbb[j];
+                } else {
+                    break;
+                }
+            }
+            bbb[j+1] = tmpV;
+
+        }
+        for (int i = 0; i < bbb.length; i++) {
+            System.out.print(bbb[i] + ",");
+        }
+
+        System.out.println("two sum");
+        Map <Integer,Integer> myMap = new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            if(myMap.containsKey(target-nums[i])) {
+                return new int []{myMap.get(target-nums[i]),i};
+            }
+            myMap.put(nums[i],i);
+        }
+        return new int [0];
+    }
+  }
+
+def twoSum(self, nums: List[int], target: int) -> List[int]:
+        n = len(nums)
+        for i in range(n - 1):
+            for j in range(i + 1, n):
+                if nums[i] + nums[j] == target:
+                    return [i, j]
+        return []  # No solution found
+
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        numMap = {}
+        n = len(nums)
+
+        for i in range(n):
+            complement = target - nums[i]
+            if complement in numMap:
+                return [numMap[complement], i]
+            numMap[nums[i]] = i
+
+        return []  # No solution found
+go
+
+func twoSum(nums []int, target int) []int {
+    // Hash table to store number->index mapping
+    ht := make(map[int]int)
+
+    // Iterate through the array
+    for i, num := range nums {
+        // Check if complement exists in hash table
+        if j, exists := ht[target-num]; exists {
+            // If found, return indices of both numbers
+            return []int{j, i}
+        }
+
+        // Store current number and its index in hash table
+        ht[num] = i
+    }
+
+    // Return empty slice if no solution found
+    return []int{}
+}
+javascript
+
+var twoSum = function(nums, target) {
+    let map = new Map();
+
+    for (let i=0; i<nums.length; i++){
+        if(map.has(target-nums[i])){
+            return [map.get(target-nums[i]), i]
+        }else{
+            map.set(nums[i], i)
+        }
+    }
+};
+
+\end{lstlisting}
+
+%\columnbreak % 强制换栏，继续在第二栏排版
+%\begin{lstlisting}[style=java, caption={}]
+%public class HelloWorld {
+%  public static void main(String[] args) {
+%        // 你好，世界
+%        System.out.println("Hello, world!");
+%    }
+%}
+%\end{lstlisting}
+\end{multicols}
+
+\newpage
+% 开始多栏排版
+\begin{multicols}{2}
+\begin{lstlisting}[style=java, caption={}]
+//c++
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> numMap;
+        int n = nums.size();
+
+        for (int i = 0; i < n; i++) {
+            int complement = target - nums[i];
+            if (numMap.count(complement)) {
+                return {numMap[complement], i};
+            }
+            numMap[nums[i]] = i;
+        }
+
+        return {}; // No solution found
+    }
+};
+
+N.283 移动零问题
+public void moveZeroes(int[] nums) {
+        int j =0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i]!=0) {
+                nums[j] = nums[i];
+                if (i!=j){
+                    nums[i] =0;
+                }
+                j++;
+            }
+        }}
+\end{lstlisting}
+\end{multicols}
+
+\newpage
+\section{插入C++代码}
+%\lstinputlisting[language=java]{Hello.java}
+%\input{Hello.txt}
+%\usepackage{verbatim}
+%\verbatiminput{Hello.txt}
+
 本文展示了如何嵌入Java代码和图片，同时提供了目录、章节标题等结构。
 
 \end{document}
