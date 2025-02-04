@@ -95,6 +95,30 @@ alert(loginLayer.style.display);
 \end{lstlisting}
 
 \newpage
+N.53 最大子数组和的问题
+\begin{lstlisting}
+public int maxSubArray(int[] nums) {
+        int max = nums[0];
+        for(int i=0;i<nums.length;i++){
+            int tmpMax = nums[i];
+            if(tmpMax>max) {
+                max = tmpMax;
+            }
+         for(int j=i+1;j<nums.length;j++) {
+            tmpMax += nums[j];
+            if(tmpMax>max) {
+                max = tmpMax;
+            }
+         }
+        }
+        System.out.println("max--"+max);
+        return max;
+    }
+\end{lstlisting}
+
+
+
+\newpage
 \begin{figure}
     \centering
     \includegraphics[width=0.5\textwidth]{9.png} % 确保替换为你的图片路径

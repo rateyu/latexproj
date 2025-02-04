@@ -19,7 +19,7 @@
 % 设置列表中Java代码的样式
 \lstdefinestyle{java}{
     language=Java,
-    backgroundcolor=\color{lightgray}, % 背景颜色
+    %backgroundcolor=\color{lightgray}, % 背景颜色
     basicstyle=\ttfamily\footnotesize, % 字体
     breaklines=true,                   % 自动换行
     captionpos=b,                      % 标题位置
@@ -78,5 +78,28 @@ public class HelloWorld {
 
 \section{结论}
 本文展示了如何嵌入Java代码和图片，同时提供了目录、章节标题等结构。
+
+\newpage
+\section{N.53 最大子数组问题}
+以下是一个嵌入的Java代码示例：
+\begin{lstlisting}[style=java, caption={HelloWorld.java}]
+public int maxSubArray(int[] nums) {
+        int max = nums[0];
+        for(int i=0;i<nums.length;i++){
+            int tmpMax = nums[i];
+            if(tmpMax>max) {
+                max = tmpMax;
+            }
+         for(int j=i+1;j<nums.length;j++) {
+            tmpMax += nums[j];
+            if(tmpMax>max) {
+                max = tmpMax;
+            }
+         }
+        }
+        System.out.println("max--"+max);
+        return max;
+    }
+\end{lstlisting}
 
 \end{document}
