@@ -10,6 +10,8 @@
 \usepackage[x11names]{xcolor} % 启用更多颜色选项
 \usepackage{amsmath}      % 数学公式
 \usepackage{graphicx}     % 图片插入
+\usepackage{rotating} % 引入rotating包
+\usepackage{pdfpages}
 \usepackage{listings}     % 用于插入代码
 \usepackage{hyperref}     % 超链接支持
 \usepackage{geometry}     % 设置页边距
@@ -77,13 +79,50 @@ public class HelloWorld {
     \label{fig:example}
 \end{figure}
 
-
 \newpage
 \section{引言}
 这里是文章的引言部分。
 
+\newpage
+\section{插入C++代码}
+%\lstinputlisting[language=java]{Hello.java}
+%\input{Hello.txt}
+%\usepackage{verbatim}
+%\verbatiminput{Hello.txt}
+
+本文展示了如何嵌入Java代码和图片，同时提供了目录、章节标题等结构。
+
+
+\newpage
+\section{简历样本与我的简历}
+\begin{figure}[h]
+  \centering
+  \begin{sideways} %选择图片
+    \includegraphics[width=1.0\textwidth]{resumes_ample.jpg} % 确保替换为你的图片路径
+    %\includegraphics[width=\textwidth, height=\textheight]{resumes_ample.jpg} % 确保替换为你的图片路径    
+  \end{sideways}
+    \caption{简历样本}
+    \label{fig:example}
+  \end{figure}
+
+
+
+\newpage
+%\section{我的简历}  
+% 插入整个PDF文件
+%\includepdf[pages=-]{../../resume_ming/CV/CV-Chinese/resume_cv.pdf} % pages=- 表示插入所有页面
+% 插入指定页面
+% ok
+\includepdf[pages={1},scale=1]{../../resume_ming/CV/CV-Chinese/resume_cv.pdf} % 插入指定的页面（第1、3和5页）
+%ok
+% \includepdf[pages={1,3,5}]{example.pdf} % 插入指定的页面（第1、3和5页）
+% 插入单个页面
+%\includepdf[pages=2]{example.pdf} % 只插入第2页
+
+
+
 \newpage % two sum 不同语言解法，含冒泡和插入排序
-%\section{Java代码示例}
+\section{冒泡、插入、两数和}
 %\vspace{-5mm}
 % 开始多栏排版
 \begin{multicols}{2}
@@ -104,18 +143,15 @@ class Solution {
                 }
             }
         }
-
         for (int i = 0; i < aaa.length; i++) {
             System.out.print(aaa[i] + ",");
         }
-
         System.out.println("");
         System.out.println("插入排序");
         int[] bbb = { 7, 5, 3, 2, 8, 0, 1 };
         for (int i = 1; i < bbb.length; i++) {
             int tmpV = bbb[i];
             int j = i - 1;
-
             /* 方法一，将比 key 大的元素向右移动 */
             /*
             while (j >= 0 && bbb[j] > tmpV) {
@@ -133,13 +169,10 @@ class Solution {
                 }
             }
             bbb[j+1] = tmpV;
-
         }
         for (int i = 0; i < bbb.length; i++) {
             System.out.print(bbb[i] + ",");
         }
-
-        System.out.println("two sum");
         Map <Integer,Integer> myMap = new HashMap<>();
         for(int i=0;i<nums.length;i++){
             if(myMap.containsKey(target-nums[i])) {
@@ -158,7 +191,6 @@ def twoSum(self, nums: List[int], target: int) -> List[int]:
                 if nums[i] + nums[j] == target:
                     return [i, j]
         return []  # No solution found
-
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -258,13 +290,5 @@ public void moveZeroes(int[] nums) {
 \end{lstlisting}
 \end{multicols}
 
-\newpage
-\section{插入C++代码}
-%\lstinputlisting[language=java]{Hello.java}
-%\input{Hello.txt}
-%\usepackage{verbatim}
-%\verbatiminput{Hello.txt}
-
-本文展示了如何嵌入Java代码和图片，同时提供了目录、章节标题等结构。
 
 \end{document}
