@@ -1,0 +1,24 @@
+* 学习技术总结2025 
+** TODO seeyon代码学习
+pc7，项目名称 seeyon ，idea 2021.1
+C:\Users\myu\Documents\PARA\2Areas\codes\xcoa_debug_srcs\xcoa-codes\v5\v5\apps-api
+
+seeyon架构代码分析
+问题1. 全量编译存在问题，
+   多次全量编译，提示堆内存不足
+   java命令排查：jstat -gcutil 11666 1000 3
+   发现E O 区占用百分之百，确认是内存问题
+   
+问题2. 设置idea 堆内存，没有生效，设置环境变量才生效，
+   生效还是报错，最后分析 idea 编译的内存 默认只有700m，增加后可以编译了。
+
+问题3. 但是继续报 模块循环依赖问题，没有办法，只能引入一个ctp-core单独编译，dsm单独分析，这样是可以了，
+   后面一个一个编译吧，用到了再引入这个模块就行。
+
+   两个核心类：（神奇的地方来了，emacs可以直接打开这个文件 ctrl x ctrl f）
+   C:\Users\myu\Documents\PARA\2Areas\codes\xcoa_debug_srcs\xcoa-codes\v5\v5\ctp-core\src\main\java\com\seeyon\ctp\common\AppContext.java
+   C:\Users\myu\Documents\PARA\2Areas\codes\xcoa_debug_srcs\xcoa-codes\v5\v5\ctp-core\src\main\java\com\seeyon\ctp\common\SystemEnvironment.java
+
+** web开放代码调试
+2025-2-22-web开发调试相关.org
+
