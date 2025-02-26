@@ -1,3 +1,5 @@
+* 代码分析
+** 代码学习
 C:\Users\myu\Documents\PARA\2Areas\codes\nien_codes\01a_netty_redis_zookeeper_source_code\ming_netty\src\main\java\com\ming\MingServer.java
 
 代码分析的方法：
@@ -5,10 +7,48 @@ C:\Users\myu\Documents\PARA\2Areas\codes\nien_codes\01a_netty_redis_zookeeper_so
 2. 数据库分析，表字段分析
 利用 id，网页上的中文名称， div的 id 名称等唯一属性进行分析
 
-文件映射：
+** idea数据库执行语句
 C:\Users\myu\AppData\Roaming\JetBrains\IntelliJIdea2021.1\consoles\db\1a70e68a-d7da-4169-b1d1-599b746a98e9\console.sql
 
+** 栏目表分析
+*** 待办中心
 
+grep -rn '待办中心' * | grep -v i18n_init_zh_CN.js | grep -v i18n_zh_CN.js
+
+ENTITY_ID LIKE '%pending.protal.more.pending.label%' OR PROPERTY_NAME LIKE '%pending.protal.more.pending.label%' OR PROPERTY_VALUE LIKE '%pending.protal.more.pending.label%'
+
+Targets
+    Occurrences of 'pending.protal.more.pending.label' in database
+Non-code usages  (1 usage found)
+    Usage in Database Schema  (1 usage found)
+        seeyon80b@localhost  (1 usage found)
+            seeyon80b  (1 usage found)
+                portal_portlet_property  (9)
+
+UPDATE seeyon80b.portal_portlet_property SET ENTITY_ID = '290390494219095970', PROPERTY_NAME = 'sections_bigtitle', PROPERTY_VALUE = 'pending.protal.more.pending.label' WHERE ID = -2437429760969193687;
+UPDATE seeyon80b.portal_portlet_property SET ENTITY_ID = '-8196927284664381498', PROPERTY_NAME = 'sections_bigtitle', PROPERTY_VALUE = 'pending.protal.more.pending.label' WHERE ID = -1004810243043473422;
+UPDATE seeyon80b.portal_portlet_property SET ENTITY_ID = '-4493045937964429596', PROPERTY_NAME = 'sections_bigtitle', PROPERTY_VALUE = 'pending.protal.more.pending.label' WHERE ID = 294743572102008193;
+UPDATE seeyon80b.portal_portlet_property SET ENTITY_ID = '5880896129511998376', PROPERTY_NAME = 'sections_bigtitle', PROPERTY_VALUE = 'pending.protal.more.pending.label' WHERE ID = 1395216918430436473;
+UPDATE seeyon80b.portal_portlet_property SET ENTITY_ID = '5845423294522148402', PROPERTY_NAME = 'sections_bigtitle', PROPERTY_VALUE = 'pending.protal.more.pending.label' WHERE ID = 2074304017207739491;
+UPDATE seeyon80b.portal_portlet_property SET ENTITY_ID = '795954603881746001', PROPERTY_NAME = 'sections_bigtitle', PROPERTY_VALUE = 'pending.protal.more.pending.label' WHERE ID = 4878209855233869090;
+UPDATE seeyon80b.portal_portlet_property SET ENTITY_ID = '8679317324205608672', PROPERTY_NAME = 'sections_bigtitle', PROPERTY_VALUE = 'pending.protal.more.pending.label' WHERE ID = 5491103090370561373;
+UPDATE seeyon80b.portal_portlet_property SET ENTITY_ID = '2010812848476145129', PROPERTY_NAME = 'sections_bigtitle', PROPERTY_VALUE = 'pending.protal.more.pending.label' WHERE ID = 5803140278145533435;
+UPDATE seeyon80b.portal_portlet_property SET ENTITY_ID = '-5835165770292769574', PROPERTY_NAME = 'sections_bigtitle', PROPERTY_VALUE = 'pending.protal.more.pending.label' WHERE ID = 7594322875477213927;
+
+
+UPDATE seeyon80b.portal_page_portlet SET PARENT_ID = -3553585964401276986, PAGE_ID = null, NAME = 'seeyon::sectionPortlet', TYPE = null, SKIN = null, LAYOUT_ROW = 1, LAYOUT_COLUMN = 4 WHERE ID = -5949232630361340862;
+UPDATE seeyon80b.portal_page_portlet SET PARENT_ID = null, PAGE_ID = -1390655488645642140, NAME = 'jetspeed-layouts::VelocityThreeColumns', TYPE = null, SKIN = 'null', LAYOUT_ROW = -1, LAYOUT_COLUMN = -1 WHERE ID = -3553585964401276\
+986;
+UPDATE seeyon80b.portal_page_portlet SET PARENT_ID = -3553585964401276986, PAGE_ID = null, NAME = 'seeyon::sectionPortlet', TYPE = null, SKIN = null, LAYOUT_ROW = 0, LAYOUT_COLUMN = 0 WHERE ID = -991888633323043839;
+UPDATE seeyon80b.portal_page_portlet SET PARENT_ID = -3553585964401276986, PAGE_ID = null, NAME = 'seeyon::sectionPortlet', TYPE = null, SKIN = null, LAYOUT_ROW = 1, LAYOUT_COLUMN = 5 WHERE ID = 327587235022522110;
+UPDATE seeyon80b.portal_page_portlet SET PARENT_ID = -3553585964401276986, PAGE_ID = null, NAME = 'seeyon::sectionPortlet', TYPE = null, SKIN = null, LAYOUT_ROW = 0, LAYOUT_COLUMN = 3 WHERE ID = 2870315627094560472;
+UPDATE seeyon80b.portal_page_portlet SET PARENT_ID = -3553585964401276986, PAGE_ID = null, NAME = 'seeyon::sectionPortlet', TYPE = null, SKIN = null, LAYOUT_ROW = 0, LAYOUT_COLUMN = 5 WHERE ID = 5181839649264191756;
+UPDATE seeyon80b.portal_page_portlet SET PARENT_ID = -3553585964401276986, PAGE_ID = null, NAME = 'seeyon::sectionPortlet', TYPE = null, SKIN = null, LAYOUT_ROW = 1, LAYOUT_COLUMN = 3 WHERE ID = 7341256170282175206;
+UPDATE seeyon80b.portal_page_portlet SET PARENT_ID = -3553585964401276986, PAGE_ID = null, NAME = 'seeyon::sectionPortlet', TYPE = null, SKIN = null, LAYOUT_ROW = 0, LAYOUT_COLUMN = 4 WHERE ID = 8011071995631714706;
+
+
+
+** 表数量统计
 ctp_enum_item	4009
 portal_portlet_property	1762
 portal_icons	1006
