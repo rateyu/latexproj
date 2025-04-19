@@ -57,9 +57,28 @@
     {7}{{{\color{darkgray}7}}}1
     {8}{{{\color{darkgray}8}}}1
     {9}{{{\color{darkgray}9}}}1
-}
+  }
 
-\begin{document}
+
+ 
+
+  \begin{document}
+
+\newpage
+% 生成目录
+\tableofcontents
+\newpage
+
+\clearpage % 强制所有浮动体（图片、表格等）输出并分页 避免图片跨页：使用 \clearpage 或 \newpage 来强制图片排版在当前页面。
+% \newpage 
+\input{100-docker.tex}
+
+\clearpage
+% \newpage
+\input{110-k8s.tex}
+
+\newpage
+ 
 \title{用  \texttt{listings} 制作类 minted 风格}
 
 \maketitle
@@ -179,5 +198,12 @@ public int maxSubArray(int[] nums) {
 }
 \end{verbatim}
 
-%\lstinputlisting{filename.js}
+% \lstinputlisting{filename.js}
+
+
+
+
+
+
+
 \end{document}
