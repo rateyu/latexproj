@@ -1,0 +1,72 @@
+\message{ !name(texlistingA5.tex)}\documentclass[10pt]{ctexart}
+\usepackage{graphicx}     % 图片插入
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage{listings}
+% a4版本
+%\usepackage[margin=1.2in]{geometry}
+% 下面是a5版本
+\usepackage{geometry}     % 设置页边距
+% 设置 A5 纸张尺寸和 1 英寸的边距
+\geometry{a5paper, left=0.5in, right=0.5in, top=0.5in, bottom=0.5in}
+
+
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{
+    aboveskip={.3\baselineskip},
+    basicstyle=\scriptsize\ttfamily\linespread{4},
+    breaklines=false,
+    columns=flexible,
+    commentstyle=\color[rgb]{0.127,0.427,0.514}\ttfamily\itshape,
+    escapechar=@,
+    extendedchars=true,
+    frame=single,
+    identifierstyle=\color{black},
+    inputencoding=latin1,
+    keywordstyle=\color[HTML]{228B22}\bfseries,
+    language=JavaScript,
+    ndkeywordstyle=\color[HTML]{228B22}\bfseries,
+    numbers=left,
+    numberstyle=\tiny,
+    prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    stringstyle=\color[rgb]{0.639,0.082,0.082}\ttfamily,
+    upquote=true,
+    showstringspaces=false,
+}
+
+\lstset{literate=%
+   *{0}{{{\color{darkgray}0}}}1
+    {1}{{{\color{darkgray}1}}}1
+    {2}{{{\color{darkgray}2}}}1
+    {3}{{{\color{darkgray}3}}}1
+    {4}{{{\color{darkgray}4}}}1
+    {5}{{{\color{darkgray}5}}}1
+    {6}{{{\color{darkgray}6}}}1
+    {7}{{{\color{darkgray}7}}}1
+    {8}{{{\color{darkgray}8}}}1
+    {9}{{{\color{darkgray}9}}}1
+  }
+
+
+ 
+
+  \begin{document}
+
+\message{ !name(texlistingA5.tex) !offset(12) }
+% \newpage
+\input{200-
+\message{ !name(texlistingA5.tex) !offset(141) }
+
+\end{document}

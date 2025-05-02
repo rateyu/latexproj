@@ -1,0 +1,58 @@
+\section{常用Kubernetes命令总结}
+{\footnotesize % 脚注大小
+集群管理命令：
+
+kubectl get nodes：查看集群中的所有节点。
+
+kubectl get pods：查看所有Pod的状态。
+
+kubectl get services：查看所有Service。
+
+kubectl get deployments：查看所有Deployment。
+
+Pod管理命令：
+
+kubectl create -f pod.yaml：通过YAML文件创建Pod。
+
+kubectl describe pod <pod-name>：查看指定Pod的详细信息。
+
+kubectl delete pod <pod-name>：删除指定Pod。
+
+kubectl logs <pod-name>：查看Pod中的容器日志。
+
+Deployment管理命令：
+
+kubectl create -f deployment.yaml：创建Deployment。
+
+kubectl get deployments：查看所有Deployment。
+
+kubectl set image deployment/<deployment-name> <container-name>=<image>：更新Deployment的镜像。
+
+kubectl scale deployment <deployment-name> --replicas=<number>：调整Deployment副本数。
+
+kubectl rollout status deployment/<deployment-name>：查看Deployment的滚动更新状态。
+
+kubectl rollout undo deployment/<deployment-name>：回滚Deployment。
+
+Service管理命令：
+
+kubectl expose pod <pod-name> --port=<port>：为Pod暴露Service。
+
+kubectl expose deployment <deployment-name> --type=LoadBalancer --port=<port>：为Deployment暴露LoadBalancer类型的Service。
+
+kubectl get svc：查看所有Service的状态。
+
+调度命令：
+
+kubectl get pod <pod-name> -o wide：查看Pod的详细信息，包括所在节点。
+
+kubectl logs <pod-name> -c <container-name>：查看指定容器的日志。
+
+集群调试命令：
+
+kubectl describe pod <pod-name>：获取Pod的详细描述信息。
+
+kubectl get events：查看集群的事件，帮助排查问题。
+
+kubectl exec -it <pod-name> -- /bin/bash：进入Pod中的容器进行交互。
+}

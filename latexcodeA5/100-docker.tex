@@ -1,0 +1,66 @@
+\section{Docker核心概念总结}
+{\footnotesize % 脚注大小
+Docker概述：
+
+Docker是一个开源的容器化平台，用于自动化应用程序的部署、扩展和管理。它通过将应用程序及其所有依赖项打包成一个容器，确保它们在任何环境中都能一致地运行。
+
+容器化：Docker容器是轻量级的虚拟化技术，允许在一个宿主操作系统上运行多个隔离的应用。
+
+Docker的组成：
+
+Docker Engine：包括客户端和服务器，负责容器的构建和管理。
+
+Docker镜像：包含应用运行所需的所有文件、库、依赖等，是容器的可执行包。
+
+Docker容器：镜像的运行实例，是可以启动、停止、删除和管理的应用环境。
+
+Docker Hub：Docker的公共镜像仓库，用户可以从中获取共享的镜像。
+
+常用Docker命令：
+
+docker run <image>：从指定镜像创建并启动一个新的容器。
+
+docker ps：查看当前运行中的容器。
+
+docker stop <container>：停止正在运行的容器。
+
+docker rm <container>：删除停止的容器。
+
+docker pull <image>：从Docker Hub或指定仓库拉取镜像。
+
+docker build -t <image-name> <dockerfile>：使用Dockerfile构建镜像。
+
+docker exec -it <container> /bin/bash：进入容器进行交互式操作。
+
+docker logs <container>：查看容器的日志输出。
+
+docker images：查看本地存储的所有镜像。
+
+Docker容器生命周期：
+
+创建：使用docker run或docker create命令从镜像创建容器。
+
+启动：容器启动后，可以使用docker start命令来启动一个已创建的容器。
+
+停止：使用docker stop停止正在运行的容器。
+
+删除：使用docker rm删除已停止的容器。
+
+Docker网络：
+
+Bridge网络：默认网络模式，用于容器间的通信，容器通过虚拟网桥互联。
+
+Host网络：容器与主机共享网络栈，直接使用主机的IP和端口。
+
+None网络：不为容器分配网络，容器无法与外界通信。
+
+Docker的存储：
+
+Volumes：Docker容器中的数据存储。数据保存在宿主机上，且容器重启时数据不会丢失。
+
+Bind Mounts：将宿主机的目录挂载到容器内，容器的修改会反映到宿主机上。
+
+Tmpfs：将数据存储在内存中，当容器停止时数据会丢失。
+
+Docker的安全性：用户权限：Docker容器以root用户身份运行，但可以通过USER指令指定非root用户运行。安全扫描：使用docker scan命令扫描镜像中的安全漏洞。隔离：通过容器的命名空间和cgroups技术来实现容器之间的隔离。
+}
